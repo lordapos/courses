@@ -13,13 +13,22 @@ app.use(express.urlencoded({extended: true}))
 
 app.get('/', (req, res) => {
     res.render('home.njk', {
-        title: 'Cyber Shop'
+        title: 'Cyber Shop',
+        isHome: true,
     })
 })
 
-app.get('/about', (req, res) => {
-    res.render('about.njk', {
-        title: 'About'
+app.get('/courses', (req, res) => {
+    res.render('courses.njk', {
+        title: 'Courses',
+        isCourses: true,
+    })
+})
+
+app.get('/add', (req, res) => {
+    res.render('add-course.njk', {
+        title: 'Add Course',
+        isAddCourse: true,
     })
 })
 

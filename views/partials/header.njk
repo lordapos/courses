@@ -2,12 +2,21 @@
     <div class="header__inner">
         <a href="/" class="header__logo"></a>
         <ul class="header__menu">
-            <li class="header__menu__item">
-                <a href="/">Home</a>
-            </li>
-            <li class="header__menu__item">
-                <a href="/about">About</a>
-            </li>
+            {% if isHome %}
+                <li class="header__menu__item header__menu__item--active"><a href="/" class="header__menu__link">Home</a></li>
+            {% else %}
+                <li class="header__menu__item"><a href="/" class="header__menu__link">Home</a></li>
+            {% endif %}
+            {% if isCourses %}
+                <li class="header__menu__item header__menu__item--active"><a href="/courses" class="header__menu__link">Courses</a></li>
+            {% else %}
+                <li class="header__menu__item"><a href="/courses" class="header__menu__link">Courses</a></li>
+            {% endif %}
+            {% if isAddCourse %}
+                <li class="header__menu__item header__menu__item--active"><a href="/add" class="header__menu__link">Add course</a></li>
+            {% else %}
+                <li class="header__menu__item"><a href="/add" class="header__menu__link">Add course</a></li>
+            {% endif %}
         </ul>
     </div>
 </header>
