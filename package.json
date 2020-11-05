@@ -1,0 +1,26 @@
+{
+  "name": "courses",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lordapos/courses.git"
+  },
+  "author": "LordApos <lordapos@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lordapos/courses/issues"
+  },
+  "homepage": "https://github.com/lordapos/courses#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
+}
