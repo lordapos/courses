@@ -6,7 +6,9 @@ const homeRoutes = require('./routes/home')
 const coursesRoutes = require('./routes/courses')
 const addRoutes = require('./routes/add')
 const sassMiddleware = require('node-sass-middleware')
+const compression = require('compression')
 
+app.use(compression());
 app.use(sassMiddleware({
     /* Options */
     src: path.join(__dirname, 'assets/scss'),
