@@ -1,0 +1,12 @@
+@import "config";
+@import "functions";
+@import "mixins";
+@import "mixins-flexbox";
+
+@import "main/fonts";
+@import "main/reset";
+@import "main/global";
+@import "main/partials/header";
+@import "main/partials/footer";
+
+@import "pages/home";

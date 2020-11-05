@@ -1,0 +1,164 @@
+body
+{
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  font-family: 'Poppins', sans-serif;
+  color: $black;
+  background-color: $white;
+  overflow-x: hidden;
+}
+
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6
+{
+  font-weight: 500;
+  line-height: 1.2;
+  color: #191919;
+}
+
+h1, .h1
+{
+  font-size: calc(1.375rem + 1.5vw);
+  @include media_min(lg)
+  {
+    font-size: 2.5rem;
+  }
+}
+
+h2, .h2
+{
+  font-size: calc(1.325rem + 0.9vw);
+  @include media_min(lg)
+  {
+    font-size: 2rem;
+  }
+}
+
+h3, .h3
+{
+  font-size: calc(1.3rem + 0.6vw);
+  @include media_min(lg)
+  {
+    font-size: 1.75rem;
+  }
+}
+
+h4, .h4
+{
+  font-size: calc(1.275rem + 0.3vw);
+  @include media_min(lg)
+  {
+    font-size: 1.5rem;
+  }
+}
+
+h5, .h5
+{
+  font-size: 1.25rem;
+}
+
+h6, .h6
+{
+  font-size: 1rem;
+}
+
+b,
+strong
+{
+  font-weight: bolder;
+}
+
+small, .small
+{
+  font-size: 0.875em;
+}
+
+sub,
+sup
+{
+  position: relative;
+  font-size: 0.75em;
+  line-height: 0;
+  vertical-align: baseline;
+}
+
+sub
+{
+  bottom: -.25em;
+}
+
+sup
+{
+  top: -.5em;
+}
+
+img,
+svg
+{
+  vertical-align: middle;
+}
+
+.fadein
+{
+  @include fadehide;
+
+  transform: translate3d(0, 5rem, 0);
+  transition: 0.7s $transition;
+  transition-delay: 0.1s;
+
+  &.fadeleft
+  {
+    transform: translate3d(-5rem, 0, 0);
+  }
+
+  &.faderight
+  {
+    transform: translate3d(5rem, 0, 0);
+  }
+
+  &.fadedelay-2
+  {
+    transition-delay: 0.225s;
+  }
+
+  &.fadedelay-3
+  {
+    transition-delay: 0.35s;
+  }
+
+  &.fadedelay-4
+  {
+    transition-delay: 0.475s;
+  }
+
+  &.fadedelay-5
+  {
+    transition-delay: 0.6s;
+  }
+
+  &.fadedelay-6
+  {
+    transition-delay: 0.725s;
+  }
+
+  &.fadedelay-7
+  {
+    transition-delay: 0.85s;
+  }
+
+  &.fadedelay-8
+  {
+    transition-delay: 0.925s;
+  }
+
+  &.onscreen
+  {
+    @include fadeshow;
+  }
+
+  &:not(.onscreen)
+  {
+    transition-duration: 0s;
+    transition-delay: 0s;
+  }
+}
