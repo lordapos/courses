@@ -2,35 +2,20 @@ const express = require('express')
 const path = require('path')
 const nunjucks = require('nunjucks')
 const app = express()
+const homeRoutes = require('./routes/home');
+const coursesRoutes = require('./routes/courses');
+const addRoutes = require('./routes/add');
 
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/', homeRoutes)
+app.use('/courses', coursesRoutes)
+app.use('/add', addRoutes)
 const env = nunjucks.configure(['views/'], {
     autoescape: true,
     express: app
 });
 
 app.use(express.urlencoded({extended: true}))
-
-app.get('/', (req, res) => {
-    res.render('home.njk', {
-        title: 'Cyber Shop',
-        isHome: true,
-    })
-})
-
-app.get('/courses', (req, res) => {
-    res.render('courses.njk', {
-        title: 'Courses',
-        isCourses: true,
-    })
-})
-
-app.get('/add', (req, res) => {
-    res.render('add-course.njk', {
-        title: 'Add Course',
-        isAddCourse: true,
-    })
-})
 
 const PORT = process.env.PORT || 3000
 
