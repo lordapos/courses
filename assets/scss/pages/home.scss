@@ -1,0 +1,9 @@
+main
+{
+    background: blue;
+
+    @include media(md)
+    {
+        background: red;
+    }
+}
