@@ -1,0 +1,24 @@
+{% extends "layouts/shop.njk" %}
+
+{% block content %}
+    <section class="course">
+        <div class="course__inner">
+            <div class="course__image" style="background-image: url({{ course.img }})"></div>
+            <div class="course__info">
+                <h1 class="course__title">{{ course.title }}</h1>
+                <h4 class="course__price price">{{ course.price }}</h4>
+
+                <p class="course__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti
+                    incidunt mollitia nam nostrum obcaecati officiis sed similique tenetur voluptate. Consequuntur
+                    distinctio doloremque dolores ipsam iste minima molestias neque, perferendis repellat vero. Commodi
+                    cum distinctio et facere maiores praesentium quibusdam unde veritatis? Accusamus at id omnis vitae?
+                    A animi cumque id incidunt officia officiis suscipit temporibus velit. Adipisci aliquam aliquid
+                    aspernatur deleniti deserunt dolor doloremque ducimus ea enim est, facilis fugit impedit in iure
+                    laboriosam, mollitia nisi obcaecati omnis optio praesentium qui quia quidem repellat repudiandae
+                    sunt tempore tenetur veritatis. Animi, dicta doloremque earum eos est facilis provident qui
+                    repudiandae voluptas.</p>
+                <button class="course__buy">Buy</button>
+            </div>
+        </div>
+    </section>
+{% endblock %}

@@ -1,1 +1,1 @@
-document.querySelectorAll(".courses__item__price").forEach(function(e){e.textContent=new Intl.NumberFormat("en-US",{currency:"USD",style:"currency"}).format(e.textContent)});
+document.querySelectorAll(".price").forEach(function(e){e.textContent=new Intl.NumberFormat("en-US",{currency:"USD",style:"currency"}).format(e.textContent)});
