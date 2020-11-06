@@ -1,0 +1,30 @@
+.add-course
+{
+    &__inner
+    {
+        @include container;
+    }
+
+    &__form
+    {
+        @include _flexbox;
+        @include _flex-direction(column);
+        margin-top: 20px;
+
+        &__item
+        {
+            padding: 1rem 0;
+            width: 100%;
+            border-bottom: 1px solid #000000;
+        }
+
+        &__submit
+        {
+            text-align: center;
+            margin-top: 20px;
+            padding: 1rem;
+            background-color: $blue;
+            color: $white;
+        }
+    }
+}

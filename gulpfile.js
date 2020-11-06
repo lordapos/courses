@@ -62,7 +62,7 @@ gulp.task('watch', function() {
     });
     gulp.watch('assets/scss/**/*.scss', gulp.series('scss'));
     gulp.watch('assets/js/**/*.js', gulp.series('scripts'));
-    gulp.watch('assets/img/*.png', gulp.series('img-compress'));
+    gulp.watch('assets/img/**', gulp.series('img-compress'));
 });
 
 gulp.task('default', gulp.parallel('img-compress', 'scss', 'scripts'), () => {
