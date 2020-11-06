@@ -11,6 +11,7 @@
                         <h3 class="courses__item__title">{{ item.title }}</h3>
                         <p class="courses__item__price price">{{ item.price }}</p>
                         <a href="/courses/{{ item.id }}" class="courses__item__link">Open course</a>
+                        <a href="/courses/{{ item.id }}/edit?allow=true" class="courses__item__link">Edit course</a>
                     </li>
                 {% endfor %}
             </ul>

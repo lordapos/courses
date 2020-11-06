@@ -1,0 +1,16 @@
+{% extends "layouts/shop.njk" %}
+
+{% block content %}
+    <section class="add-course">
+        <div class="add-course__inner">
+            <h2>Edit Course: {{ course.title }}</h2>
+            <form action="/courses/edit" method="post" class="add-course__form">
+                <input required type="text" class="add-course__form__item" placeholder="Course name" name="title" id="title" value="{{ course.title }}">
+                <input required type="number" class="add-course__form__item" placeholder="Course price" name="price" id="price" value="{{ course.price }}">
+                <input required type="text" class="add-course__form__item" placeholder="image URL" name="img" id="img" value="{{ course.img }}">
+                <input type="hidden" value="{{ course.id }}" name="id">
+                <button class="add-course__form__submit" type="submit">Save</button>
+            </form>
+        </div>
+    </section>
+{% endblock %}
