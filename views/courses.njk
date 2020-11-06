@@ -1,5 +1,19 @@
 {% extends "layouts/shop.njk" %}
 
 {% block content %}
-    <h1>Courses page</h1>
+    <section class="courses">
+        <div class="courses__inner">
+            <h1>Courses page</h1>
+            <ul class="courses__list">
+                {% for item in items %}
+                    <li class="courses__item">
+                        <div class="courses__item__image" style="background-image: url({{ item.img }})"></div>
+                        <h3 class="courses__item__title">{{ item.title }}</h3>
+                        <p class="courses__item__price">{{ item.price }}$</p>
+                        <a href="/courses/{{ item.id }}" class="courses__item__link">Open course</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
 {% endblock %}
