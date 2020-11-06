@@ -1,0 +1,8 @@
+.home
+{
+    &__inner
+    {
+        margin-top: 1rem;
+        @include container;
+    }
+}
