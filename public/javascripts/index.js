@@ -1,1 +1,1 @@
-console.log("hello world");console.log("hello world");console.log("hello world");console.log("hello world");console.log("hello world");console.log("hello world");console.log("hello world");console.log("hello world");console.log("hello world");console.log("hello world");console.log("hello world");
+document.querySelectorAll(".courses__item__price").forEach(function(e){e.textContent=new Intl.NumberFormat("en-US",{currency:"USD",style:"currency"}).format(e.textContent)});

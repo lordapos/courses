@@ -49,7 +49,7 @@ gulp.task('scripts', () =>
     .src([
       'assets/js/index.js'
     ])
-    .pipe(concat('scripts.js'))
+    .pipe(concat('index.js'))
     .pipe(uglify())
     .pipe(gulp.dest('public/javascripts'))
 );
