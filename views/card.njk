@@ -1,7 +1,7 @@
 {% extends "layouts/shop.njk" %}
 
 {% block content %}
-    <section class="basket">
+    <section class="basket" id="card">
         <div class="basket__inner">
             <h1>Basket</h1>
             {% if courses.length %}
@@ -16,7 +16,7 @@
                     {% for item in courses %}
                         <td>{{ item.title }}</td>
                         <td>{{ item.count }}</td>
-                        <td> <button class="delete">Delete</button> </td>
+                        <td> <button class="delete js-remove" data-id="{{ item.id }}">Delete</button> </td>
                     {% endfor %}
                     </tbody>
                 </table>

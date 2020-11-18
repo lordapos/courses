@@ -50,7 +50,7 @@ gulp.task('scripts', () =>
       'assets/js/index.js'
     ])
     .pipe(concat('index.js'))
-    .pipe(uglify())
+    // .pipe(uglify())
     .pipe(gulp.dest('public/javascripts'))
 );
 
