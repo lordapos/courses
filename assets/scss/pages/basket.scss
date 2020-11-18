@@ -1,0 +1,49 @@
+.basket
+{
+    &__inner
+    {
+        @include container;
+    }
+
+    &__empty
+    {
+        margin-top: 2rem;
+    }
+
+    table
+    {
+        width: 100%;
+
+        th
+        {
+            font-weight: bold;
+            padding-bottom: 1rem;
+        }
+
+        td
+        {
+            text-align: center;
+            border-top: 1px solid #000000;
+            padding: 1rem 0;
+        }
+
+        .delete
+        {
+            padding: 0.5rem 2rem;
+            background: $blue;
+            color: $white;
+            border-radius: 4px;
+        }
+    }
+
+    .price
+    {
+        padding-left: 1rem;
+    }
+
+    .total
+    {
+        border-top: 1px solid #000000;
+        padding-top: 1rem;
+    }
+}

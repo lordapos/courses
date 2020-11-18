@@ -1,9 +1,29 @@
 {% extends "layouts/shop.njk" %}
 
 {% block content %}
-    <section class="courses">
-        <div class="courses__inner">
-            <h1>Card page</h1>
+    <section class="basket">
+        <div class="basket__inner">
+            <h1>Basket</h1>
+            {% if courses.length %}
+
+                <table>
+                    <thead>
+                        <th>Name</th>
+                        <th>Count</th>
+                        <th>Action</th>
+                    </thead>
+                    <tbody>
+                    {% for item in courses %}
+                        <td>{{ item.title }}</td>
+                        <td>{{ item.count }}</td>
+                        <td> <button class="delete">Delete</button> </td>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <p class="total"><strong>Total Price:</strong> <span class="price">{{price}}</span></p>
+            {% else %}
+                <p class="basket__empty">Empty</p>
+            {% endif %}
         </div>
     </section>
 {% endblock %}
