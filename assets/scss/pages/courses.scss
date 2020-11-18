@@ -55,5 +55,22 @@
             text-align: center;
             margin-top: 1rem;
         }
+
+        &__form
+        {
+            margin-top: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row;
+            width: 100%;
+
+            button
+            {
+                padding: 0.5rem 2rem;
+                background: #cccccc;
+                border-radius: 4px;
+            }
+        }
     }
 }

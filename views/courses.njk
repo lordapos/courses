@@ -12,6 +12,10 @@
                         <p class="courses__item__price price">{{ item.price }}</p>
                         <a href="/courses/{{ item.id }}" class="courses__item__link">Open course</a>
                         <a href="/courses/{{ item.id }}/edit?allow=true" class="courses__item__link">Edit course</a>
+                        <form action="/card/add" method="post" class="courses__item__form">
+                            <input type="hidden" name="id" value="{{ item.id }}">
+                            <button type="submit">Buy</button>
+                        </form>
                     </li>
                 {% endfor %}
             </ul>
