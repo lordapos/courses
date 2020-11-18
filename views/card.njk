@@ -4,26 +4,34 @@
     <section class="basket" id="card">
         <div class="basket__inner">
             <h1>Basket</h1>
-            {% if courses.length %}
+            <div class="basket__content">
+                {% if courses.length %}
 
-                <table>
-                    <thead>
-                        <th>Name</th>
-                        <th>Count</th>
-                        <th>Action</th>
-                    </thead>
-                    <tbody>
-                    {% for item in courses %}
-                        <td>{{ item.title }}</td>
-                        <td>{{ item.count }}</td>
-                        <td> <button class="delete js-remove" data-id="{{ item.id }}">Delete</button> </td>
-                    {% endfor %}
-                    </tbody>
-                </table>
-                <p class="total"><strong>Total Price:</strong> <span class="price">{{price}}</span></p>
-            {% else %}
-                <p class="basket__empty">Empty</p>
-            {% endif %}
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Count</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for item in courses %}
+                            <tr>
+                                <td>{{ item.title }}</td>
+                                <td>{{ item.count }}</td>
+                                <td>
+                                    <button class="delete js-remove" data-id="{{ item.id }}">Delete</button>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    <p class="total"><strong>Total Price:</strong> <span class="price">{{ price }}</span></p>
+                {% else %}
+                    <p class="basket__empty">Empty</p>
+                {% endif %}
+            </div>
         </div>
     </section>
 {% endblock %}
