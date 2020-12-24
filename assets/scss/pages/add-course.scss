@@ -25,6 +25,12 @@
             padding: 1rem;
             background-color: $blue;
             color: $white;
+
+            &--remove
+            {
+                background-color: #912626;
+                width: 100%;
+            }
         }
     }
 }

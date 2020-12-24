@@ -11,6 +11,10 @@
                 <input type="hidden" value="{{ course.id }}" name="id">
                 <button class="add-course__form__submit" type="submit">Save</button>
             </form>
+            <form action="/courses/remove" method="POST" class="add-course__form">
+                <input type="hidden" value="{{ course.id }}" name="id">
+                <button class="add-course__form__submit add-course__form__submit--remove" type="submit">Remove course</button>
+            </form>
         </div>
     </section>
 {% endblock %}

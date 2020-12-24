@@ -1,5 +1,6 @@
 const express = require('express')
 const path = require('path')
+const mongoose = require('mongoose')
 const nunjucks = require('nunjucks')
 const app = express()
 const homeRoutes = require('./routes/home')
@@ -20,6 +21,22 @@ const env = nunjucks.configure(['views/'], {
 
 const PORT = process.env.PORT || 3000
 
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`)
-})
+async function start() {
+    try {
+        const url = 'mongodb+srv://cyber:QU4EXHZEwVxFp6j4@courses.op53b.mongodb.net/shop'
+        await  mongoose.connect(url, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+            useFindAndModify: false,
+        })
+        app.listen(PORT, () => {
+            console.log(`Server is running on port ${PORT}`)
+        })
+    } catch (e) {
+        console.log(e)
+    }
+
+}
+
+start()
+
