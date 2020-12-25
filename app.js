@@ -6,6 +6,7 @@ const app = express()
 const homeRoutes = require('./routes/home')
 const coursesRoutes = require('./routes/courses')
 const addRoutes = require('./routes/add')
+const ordersRoutes = require('./routes/orders')
 const cardRoutes = require('./routes/card')
 const User = require('./models/user')
 
@@ -25,6 +26,7 @@ app.use('/', homeRoutes)
 app.use('/courses', coursesRoutes)
 app.use('/add', addRoutes)
 app.use('/card', cardRoutes)
+app.use('/orders', ordersRoutes)
 const env = nunjucks.configure(['views/'], {
     autoescape: true,
     express: app
