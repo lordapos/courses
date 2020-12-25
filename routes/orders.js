@@ -3,11 +3,25 @@ const Order = require('../models/order')
 const router = Router()
 
 router.get('/', async (req, res) => {
-    res.render('orders.njk', {
-        title: `Orders`,
-        isOrders: true,
-        // courses: courses,
-    })
+    try {
+        const orders = await Order.find({'user.userId': req.user._id})
+            .populate('user.userId')
+
+        res.render('orders.njk', {
+            title: `Orders`,
+            isOrders: true,
+            orders: orders.map(o => {
+                return {
+                    ...o._doc,
+                    price: o.courses.reduce((total, c) => {
+                        return total += c.count * c.course.price
+                    }, 0)
+                }
+            })
+        })
+    } catch (e) {
+        console.log(e)
+    }
 })
 
 router.post('/', async (req, res) => {
@@ -15,9 +29,10 @@ router.post('/', async (req, res) => {
         const user = await req.user
             .populate('cart.items.courseId')
             .execPopulate()
+
         const courses = user.cart.items.map(i => ({
             count: i.count,
-            courses: {...i.courseId._doc}
+            course: {...i.courseId._doc}
         }))
 
         const order = new Order({
@@ -25,7 +40,7 @@ router.post('/', async (req, res) => {
                 name: req.user.name,
                 userId: req.user
             },
-            course: courses
+            courses: courses
         })
 
         await order.save()

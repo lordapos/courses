@@ -1,5 +1,32 @@
 {% extends "layouts/shop.njk" %}
 
 {% block content %}
-
+    <section class="orders">
+        <div class="orders__inner">
+            <h1>Orders</h1>
+            {% if orders.length %}
+                <div class="orders__list">
+                    {% for item in orders %}
+                        <div class="orders__item">
+                            <h4>Order #{{ item._id }}</h4>
+                            <p><strong>Date: </strong> <span class="date">{{ item.date }}</span></p>
+                            <p><strong>User: </strong> <em>{{ item.user.userId.name }}</em> ({{ item.user.userId.email }})</p>
+                            <hr>
+                            <ol>
+                                {% for value in item.courses %}
+                                    <li>
+                                        {{ value.course.title }} (x <strong>{{ value.count }}</strong>)
+                                    </li>
+                                {% endfor %}
+                            </ol>
+                            <hr>
+                            <h3>Price: <span class="price">{{ item.price }}</span></h3>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p class="orders__empty">Empty Orders</p>
+            {% endif %}
+        </div>
+    </section>
 {% endblock %}
