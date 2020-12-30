@@ -13,6 +13,7 @@ const cardRoutes = require('./routes/card')
 const authRoutes = require('./routes/auth')
 const User = require('./models/user')
 const varMiddleware = require('./middleware/variables')
+const userMiddleware = require('./middleware/user')
 
 const MONGODB_URI = 'mongodb+srv://cyber:QU4EXHZEwVxFp6j4@courses.op53b.mongodb.net/shop'
 app.use(express.static(path.join(__dirname, 'public')));
@@ -29,6 +30,7 @@ app.use(session({
     store: store
 }))
 app.use(varMiddleware)
+app.use(userMiddleware)
 app.use('/', homeRoutes)
 app.use('/courses', coursesRoutes)
 app.use('/add', addRoutes)
