@@ -17,8 +17,9 @@
                         </form>
                     </div>
                     <div id="registration-tab" class="auth__tabs__content__item">
-                        <form action="/auth/registration" method="post" class="auth__registration-form">
+                        <form action="/auth/register" method="post" class="auth__registration-form">
                             <input type="email" class="auth__registration-form__input" name="email" required placeholder="Email">
+                            <input type="text" class="auth__registration-form__input" name="name" required placeholder="Name">
                             <input type="password" class="auth__registration-form__input" name="password" required placeholder="Password">
                             <input type="password" class="auth__registration-form__input" name="cpassword" required placeholder="Confirm password">
                             <button type="submit" class="auth__registration-form__submit">Registration</button>
