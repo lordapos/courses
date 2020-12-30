@@ -80,5 +80,12 @@
             background-color: $blue;
             color: #FFFFFF;
         }
+
+        &__error
+        {
+            color: #912626;
+            font-weight: 500;
+            margin-top: 1rem;
+        }
     }
 }

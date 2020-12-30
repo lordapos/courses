@@ -1,6 +1,7 @@
 const express = require('express')
 const path = require('path')
 const csrf = require('csurf')
+const flash = require('connect-flash')
 const mongoose = require('mongoose')
 const nunjucks = require('nunjucks')
 const session = require('express-session')
@@ -12,7 +13,6 @@ const addRoutes = require('./routes/add')
 const ordersRoutes = require('./routes/orders')
 const cardRoutes = require('./routes/card')
 const authRoutes = require('./routes/auth')
-const User = require('./models/user')
 const varMiddleware = require('./middleware/variables')
 const userMiddleware = require('./middleware/user')
 
@@ -31,6 +31,7 @@ app.use(session({
     store: store
 }))
 app.use(csrf())
+app.use(flash())
 app.use(varMiddleware)
 app.use(userMiddleware)
 app.use('/', homeRoutes)

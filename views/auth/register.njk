@@ -14,8 +14,10 @@
                             <input type="email" class="auth__registration-form__input" name="email" required placeholder="Email">
                             <input type="text" class="auth__registration-form__input" name="name" required placeholder="Name">
                             <input type="password" class="auth__registration-form__input" name="password" required placeholder="Password">
-                            <input type="password" class="auth__registration-form__input" name="cpassword" required placeholder="Confirm password">
                             <input type="hidden" name="_csrf" value="{{ csrf }}">
+                            {% if error %}
+                                <p class="auth__registration-form__error">{{ error }}</p>
+                            {% endif %}
                             <button type="submit" class="auth__registration-form__submit">Registration</button>
                         </form>
                     </div>

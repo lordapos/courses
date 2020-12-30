@@ -7,6 +7,7 @@ router.get('/login', (req, res) => {
     res.render('auth/login.njk', {
         title: 'Login',
         isLogin: true,
+        error: req.flash('error')
     })
 })
 
@@ -14,6 +15,7 @@ router.get('/register', (req, res) => {
     res.render('auth/register.njk', {
         title: 'Register',
         isLogin: true,
+        error: req.flash('error')
     })
 })
 
@@ -34,10 +36,12 @@ router.post('/login', async (req, res) => {
                     res.redirect('/')
                 })
             } else {
-                res.redirect('/auth/login#login')
+                req.flash('error', 'Wrong password!')
+                res.redirect('/auth/login')
             }
         } else {
-            res.redirect('/auth/login#login')
+            req.flash('error', 'User with this email does not exist!')
+            res.redirect('/auth/login')
         }
     } catch (e) {
         console.log(e)
@@ -55,14 +59,15 @@ router.post('/register', async (req, res) => {
         const {email, password, repeat, name} = req.body
         const candidate = await User.findOne({ email })
         if (candidate) {
-            res.redirect('/auth/login#register')
+            req.flash('error', 'User with this email already exists!')
+            res.redirect('/auth/register')
         } else {
             const hashPassword = await bcrypt.hash(password, 10)
             const user = new User({
                 email, name, password: hashPassword, cart: {items: []}
             })
             await user.save()
-            res.redirect('/auth/login#login')
+            res.redirect('/auth/login')
         }
     } catch (e) {
         console.log(e)
