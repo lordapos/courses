@@ -12,25 +12,33 @@
             {% else %}
                 <li class="header__menu__item"><a href="/courses" class="header__menu__link">Courses</a></li>
             {% endif %}
-            {% if isAddCourse %}
-                <li class="header__menu__item header__menu__item--active"><a href="/add" class="header__menu__link">Add course</a></li>
+
+            {% if isAuth %}
+                {% if isAddCourse %}
+                    <li class="header__menu__item header__menu__item--active"><a href="/add" class="header__menu__link">Add course</a></li>
+                {% else %}
+                    <li class="header__menu__item"><a href="/add" class="header__menu__link">Add course</a></li>
+                {% endif %}
+
+                {% if isOrders %}
+                    <li class="header__menu__item header__menu__item--active"><a href="/orders" class="header__menu__link">Orders</a></li>
+                {% else %}
+                    <li class="header__menu__item"><a href="/orders" class="header__menu__link">Orders</a></li>
+                {% endif %}
+
+                {% if isCard %}
+                    <li class="header__menu__item header__menu__item--active"><a href="/card" class="header__menu__link">Basket</a></li>
+                {% else %}
+                    <li class="header__menu__item"><a href="/card" class="header__menu__link">Basket</a></li>
+                {% endif %}
+
+                <li class="header__menu__item"><a href="/auth/logout" class="header__menu__link">Logout</a></li>
             {% else %}
-                <li class="header__menu__item"><a href="/add" class="header__menu__link">Add course</a></li>
-            {% endif %}
-            {% if isCard %}
-                <li class="header__menu__item header__menu__item--active"><a href="/card" class="header__menu__link">Basket</a></li>
-            {% else %}
-                <li class="header__menu__item"><a href="/card" class="header__menu__link">Basket</a></li>
-            {% endif %}
-            {% if isOrders %}
-                <li class="header__menu__item header__menu__item--active"><a href="/orders" class="header__menu__link">Orders</a></li>
-            {% else %}
-                <li class="header__menu__item"><a href="/orders" class="header__menu__link">Orders</a></li>
-            {% endif %}
-            {% if isLogin %}
-                <li class="header__menu__item header__menu__item--active"><a href="/auth/login" class="header__menu__link">Login</a></li>
-            {% else %}
-                <li class="header__menu__item"><a href="/auth/login" class="header__menu__link">Login</a></li>
+                {% if isLogin %}
+                    <li class="header__menu__item header__menu__item--active"><a href="/auth/login" class="header__menu__link">Login</a></li>
+                {% else %}
+                    <li class="header__menu__item"><a href="/auth/login" class="header__menu__link">Login</a></li>
+                {% endif %}
             {% endif %}
         </ul>
     </div>

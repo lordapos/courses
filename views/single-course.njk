@@ -17,7 +17,9 @@
                     laboriosam, mollitia nisi obcaecati omnis optio praesentium qui quia quidem repellat repudiandae
                     sunt tempore tenetur veritatis. Animi, dicta doloremque earum eos est facilis provident qui
                     repudiandae voluptas.</p>
-                <button class="course__buy">Buy</button>
+                {% if isAuth %}
+                    <button class="course__buy">Buy</button>
+                {% endif %}
             </div>
         </div>
     </section>
