@@ -21,7 +21,7 @@
                                 <td>{{ item.title }}</td>
                                 <td>{{ item.count }}</td>
                                 <td>
-                                    <button class="delete js-remove" data-id="{{ item._id }}">Delete</button>
+                                    <button class="delete js-remove" data-csrf="{{ csrf }}" data-id="{{ item._id }}">Delete</button>
                                 </td>
                             </tr>
                         {% endfor %}
@@ -29,6 +29,7 @@
                     </table>
                     <p class="total"><strong>Total Price:</strong> <span class="price">{{ price }}</span></p>
                     <form action="/orders" method="post">
+                        <input type="hidden" name="_csrf" value="{{ csrf }}">
                         <button type="submit" class="course__buy">Order</button>
                     </form>
                 {% else %}

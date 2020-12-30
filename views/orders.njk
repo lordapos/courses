@@ -8,7 +8,7 @@
                 <div class="orders__list">
                     {% for item in orders %}
                         <div class="orders__item">
-                            <h4>Order #{{ item._id }}</h4>
+                            <h4>Order #{{ loop.index }}</h4>
                             <p><strong>Date: </strong> <span class="date">{{ item.date }}</span></p>
                             <p><strong>User: </strong> <em>{{ item.user.userId.name }}</em> ({{ item.user.userId.email }})</p>
                             <hr>

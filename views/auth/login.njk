@@ -13,6 +13,7 @@
                         <form action="/auth/login" method="post" class="auth__login-form">
                             <input type="email" class="auth__login-form__input" name="email" required placeholder="Email">
                             <input type="password" class="auth__login-form__input" name="password" required placeholder="Password">
+                            <input type="hidden" name="_csrf" value="{{ csrf }}">
                             <button type="submit" class="auth__login-form__submit">Login</button>
                         </form>
                     </div>
@@ -22,6 +23,7 @@
                             <input type="text" class="auth__registration-form__input" name="name" required placeholder="Name">
                             <input type="password" class="auth__registration-form__input" name="password" required placeholder="Password">
                             <input type="password" class="auth__registration-form__input" name="cpassword" required placeholder="Confirm password">
+                            <input type="hidden" name="_csrf" value="{{ csrf }}">
                             <button type="submit" class="auth__registration-form__submit">Registration</button>
                         </form>
                     </div>

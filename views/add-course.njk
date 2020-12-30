@@ -8,6 +8,7 @@
                 <input required type="text" class="add-course__form__item" placeholder="Course name" name="title" id="title">
                 <input required type="number" class="add-course__form__item" placeholder="Course price" name="price" id="price">
                 <input required type="text" class="add-course__form__item" placeholder="image URL" name="img" id="img">
+                <input type="hidden" name="_csrf" value="{{ csrf }}">
                 <button class="add-course__form__submit" type="submit">Add</button>
             </form>
         </div>
