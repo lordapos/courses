@@ -5,7 +5,14 @@ const bcrypt = require('bcryptjs')
 
 router.get('/login', (req, res) => {
     res.render('auth/login.njk', {
-        title: 'Authentication',
+        title: 'Login',
+        isLogin: true,
+    })
+})
+
+router.get('/register', (req, res) => {
+    res.render('auth/register.njk', {
+        title: 'Register',
         isLogin: true,
     })
 })
