@@ -1,0 +1,84 @@
+.auth
+{
+    &__inner
+    {
+        @include container;
+    }
+
+    &__tabs
+    {
+        margin-top: 20px;
+
+        &__head
+        {
+            @include _flexbox;
+            @include _align-items(center);
+        }
+
+        &__item
+        {
+            display: block;
+            min-width: 150px;
+            height: 50px;
+            @include _flexbox;
+            @include _align-items(center);
+            border-top: 1px solid $blue;
+            border-right: 1px solid $blue;
+            padding: 0 10px;
+            color: $blue;
+            transition: 0.3s ease-in, 0.3s ease-in-out;
+
+            &:first-child
+            {
+                border-left: 1px solid $blue;
+            }
+
+            &:hover
+            {
+                background-color: rgba(12, 39, 133, 0.05);
+            }
+
+            &--active
+            {
+                background-color: rgba(12, 39, 133, 0.15);
+            }
+        }
+        &__content
+        {
+            padding-top: 1rem;
+
+            &__item
+            {
+                display: none;
+
+                &--active
+                {
+                    display: block;
+                }
+            }
+        }
+    }
+
+    &__login-form,
+    &__registration-form
+    {
+        @include _flexbox;
+        @include _flex-direction(column);
+        @include _align-items(flex-start);
+
+        &__input
+        {
+            padding: 1rem 0;
+            width: 40%;
+            border-bottom: 1px solid #000000;
+        }
+
+        &__submit
+        {
+            margin-top: 1rem;
+            padding: .8rem 3rem;
+            background-color: $blue;
+            color: #FFFFFF;
+        }
+    }
+}

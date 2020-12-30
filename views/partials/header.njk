@@ -27,6 +27,11 @@
             {% else %}
                 <li class="header__menu__item"><a href="/orders" class="header__menu__link">Orders</a></li>
             {% endif %}
+            {% if isLogin %}
+                <li class="header__menu__item header__menu__item--active"><a href="/auth/login" class="header__menu__link">Login</a></li>
+            {% else %}
+                <li class="header__menu__item"><a href="/auth/login" class="header__menu__link">Login</a></li>
+            {% endif %}
         </ul>
     </div>
 </header>

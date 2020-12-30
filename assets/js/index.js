@@ -58,3 +58,24 @@ if ($card) {
         }
     })
 }
+
+const $login = document.querySelector('.auth__tabs #login');
+const $reg = document.querySelector('.auth__tabs #registration');
+
+if ($login) {
+    $login.addEventListener('click', function (event) {
+        $reg.classList.remove("auth__tabs__item--active");
+        $login.classList.add("auth__tabs__item--active");
+        document.querySelector('#login-tab').classList.add("auth__tabs__content__item--active");
+        document.querySelector('#registration-tab').classList.remove("auth__tabs__content__item--active");
+    })
+}
+
+if ($reg) {
+    $reg.addEventListener('click', function (event) {
+        $reg.classList.add("auth__tabs__item--active");
+        $login.classList.remove("auth__tabs__item--active");
+        document.querySelector('#registration-tab').classList.add("auth__tabs__content__item--active");
+        document.querySelector('#login-tab').classList.remove("auth__tabs__content__item--active");
+    })
+}

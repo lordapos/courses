@@ -37,6 +37,19 @@
             {
                 margin-right: 0;
             }
+
+            &--active
+            {
+                .header__menu__link
+                {
+                    text-decoration: underline;
+                }
+            }
+        }
+
+        &__link
+        {
+            color: $blue;
         }
     }
 }
