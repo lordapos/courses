@@ -15,17 +15,17 @@ const cardRoutes = require('./routes/card')
 const authRoutes = require('./routes/auth')
 const varMiddleware = require('./middleware/variables')
 const userMiddleware = require('./middleware/user')
+const keys = require('./keys')
 
-const MONGODB_URI = 'mongodb+srv://cyber:QU4EXHZEwVxFp6j4@courses.op53b.mongodb.net/shop'
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({extended: true}))
 
 const store = new MongoStore({
     collection: 'sessions',
-    uri: MONGODB_URI,
+    uri: keys.MONGODB_URI,
 })
 app.use(session({
-    secret: 'some secret',
+    secret: keys.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
     store: store
@@ -50,7 +50,7 @@ const PORT = process.env.PORT || 3000
 
 async function start() {
     try {
-        await  mongoose.connect(MONGODB_URI, {
+        await  mongoose.connect(keys.MONGODB_URI, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
             useFindAndModify: false,
