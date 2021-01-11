@@ -75,10 +75,18 @@
 
         &__submit
         {
-            margin-top: 1rem;
             padding: .8rem 3rem;
             background-color: $blue;
             color: #FFFFFF;
+            margin-top: 1rem;
+        }
+
+        &__reset
+        {
+            padding: .8rem 3rem;
+            background-color: #a9a7a7;
+            color: $blue;
+            margin-top: 1rem;
         }
 
         &__error
@@ -86,6 +94,14 @@
             color: #912626;
             font-weight: 500;
             margin-top: 1rem;
+        }
+
+        &__buttons
+        {
+            width: 40%;
+            @include _flexbox;
+            @include _justify-content(space-between);
+            @include _align-items(center);
         }
     }
 }

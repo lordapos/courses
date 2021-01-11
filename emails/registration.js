@@ -9,7 +9,7 @@ module.exports = function (email) {
             <h1>Welcome to courses.cyber-lords</h1>
             <p>You have successfully created an account - ${email}</p>
             <hr />
-            <a href="http://courses.cyber-lords.com/">SHOP</a>
+            <a href="${keys.BASE_URL}">SHOP</a>
         `
     }
 }
