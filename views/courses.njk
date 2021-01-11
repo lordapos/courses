@@ -12,12 +12,15 @@
                         <p class="courses__item__price price">{{ item.price }}</p>
                         <a href="/courses/{{ item.id }}" class="courses__item__link">Open course</a>
                         {% if isAuth %}
-                        <a href="/courses/{{ item.id }}/edit?allow=true" class="courses__item__link">Edit course</a>
-                        <form action="/card/add" method="post" class="courses__item__form">
-                            <input type="hidden" name="id" value="{{ item.id }}">
-                            <input type="hidden" name="_csrf" value="{{ csrf }}">
-                            <button type="submit">Buy</button>
-                        </form>
+                            {% if item.userId._id == userId %}
+                                <a href="/courses/{{ item.id }}/edit?allow=true" class="courses__item__link">Edit
+                                    course</a>
+                            {% endif %}
+                            <form action="/card/add" method="post" class="courses__item__form">
+                                <input type="hidden" name="id" value="{{ item.id }}">
+                                <input type="hidden" name="_csrf" value="{{ csrf }}">
+                                <button type="submit">Buy</button>
+                            </form>
                         {% endif %}
                     </li>
                 {% endfor %}
