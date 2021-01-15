@@ -1,12 +1,14 @@
 const {Router} = require('express')
 const bcrypt = require('bcryptjs')
 const crypto = require('crypto')
+const {validationResult} = require('express-validator/check')
 const nodemailer = require('nodemailer');
 const sendgrid = require('nodemailer-sendgrid-transport')
 const User = require('../models/user')
 const keys = require('../keys')
 const regEmail = require('../emails/registration')
 const resetEmail = require('../emails/reset')
+const {registerValidators} = require('../utils/validators')
 const router = Router()
 
 const transporter = nodemailer.createTransport(sendgrid({
@@ -32,7 +34,7 @@ router.get('/register', (req, res) => {
 router.post('/login', async (req, res) => {
     try {
         const {email, password} = req.body
-        const candidate = await User.findOne({ email })
+        const candidate = await User.findOne({email})
         if (candidate) {
             const areSame = await bcrypt.compare(password, candidate.password)
             if (areSame) {
@@ -64,22 +66,23 @@ router.get('/logout', async (req, res) => {
     })
 })
 
-router.post('/register', async (req, res) => {
+router.post('/register', registerValidators, async (req, res) => {
     try {
-        const {email, password, repeat, name} = req.body
-        const candidate = await User.findOne({ email })
-        if (candidate) {
-            req.flash('error', 'User with this email already exists!')
-            res.redirect('/auth/register')
-        } else {
-            const hashPassword = await bcrypt.hash(password, 10)
-            const user = new User({
-                email, name, password: hashPassword, cart: {items: []}
-            })
-            await user.save()
-            res.redirect('/auth/login')
-            await transporter.sendMail(regEmail(email))
+        const {email, password, name} = req.body
+
+        const errors = validationResult(req)
+
+        if (!errors.isEmpty()) {
+            req.flash('error', errors.array()[0].msg)
+            return res.status(422).redirect('/auth/register')
         }
+        const hashPassword = await bcrypt.hash(password, 10)
+        const user = new User({
+            email, name, password: hashPassword, cart: {items: []}
+        })
+        await user.save()
+        res.redirect('/auth/login')
+        await transporter.sendMail(regEmail(email))
     } catch (e) {
         console.log(e)
     }
@@ -105,7 +108,7 @@ router.post('/reset', (req, res) => {
 
             if (candidate) {
                 candidate.resetToken = token
-                candidate.resetTokenExp = Date.now() + 60*60*1000
+                candidate.resetTokenExp = Date.now() + 60 * 60 * 1000
                 await candidate.save()
                 await transporter.sendMail(resetEmail(candidate.email, token))
                 res.redirect('/auth/login')
