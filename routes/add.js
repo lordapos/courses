@@ -16,13 +16,12 @@ router.post('/', auth, courseValidators, async (req, res) => {
     const errors = validationResult(req)
     if (!errors.isEmpty()) {
         return res.status(422).render('add-course.njk', {
-            title: 'Добавить курс',
+            title: 'Add Course',
             isAdd: true,
             error: errors.array()[0].msg,
             data: {
                 title: req.body.title,
                 price: req.body.price,
-                img: req.body.img
             }
         })
     }
@@ -30,7 +29,7 @@ router.post('/', auth, courseValidators, async (req, res) => {
     const course = new Course({
         title: req.body.title,
         price: req.body.price,
-        img: req.body.img,
+        img: '/' + req.file.path,
         userId: req.user
     })
 

@@ -66,6 +66,10 @@ router.post('/edit', courseValidators, auth, async (req, res) => {
         return res.status(422).redirect(`/courses/${id}/edit?allow=true`)
     }
 
+    if (req.file) {
+        req.body.img = '/' + req.file.path
+    }
+
     try {
         delete req.body.id
         const course = await Course.findById(id)

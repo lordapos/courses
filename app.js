@@ -24,7 +24,7 @@ const fileMiddleware = require('./middleware/file')
 const keys = require('./keys')
 
 app.use(express.static(path.join(__dirname, 'public')));
-app.use('/avatars', express.static(path.join(__dirname, 'avatars')));
+app.use('/images', express.static(path.join(__dirname, 'images')));
 app.use(express.urlencoded({extended: true}))
 
 const store = new MongoStore({
@@ -62,7 +62,7 @@ app.use(errorHandler)
 const PORT = process.env.PORT || 3000
 async function start() {
     try {
-        await  mongoose.connect(keys.MONGODB_URI, {
+        await mongoose.connect(keys.MONGODB_URI, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
             useFindAndModify: false,

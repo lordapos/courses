@@ -4,22 +4,33 @@
     <section class="add-course">
         <div class="add-course__inner">
             <h2>Edit Course: {{ course.title }}</h2>
-            <form action="/courses/edit" method="post" class="add-course__form">
-                <input required type="text" class="add-course__form__item" placeholder="Course name" name="title" id="title" value="{{ course.title }}">
-                <input required type="number" class="add-course__form__item" placeholder="Course price" name="price" id="price" value="{{ course.price }}">
-                <input required type="text" class="add-course__form__item" placeholder="image URL" name="img" id="img" value="{{ course.img }}">
-                <input type="hidden" value="{{ course.id }}" name="id">
-                <input type="hidden" name="_csrf" value="{{ csrf }}">
-                {% if error %}
-                    <p class="add-course__form__error">{{ error }}</p>
-                {% endif %}
-                <button class="add-course__form__submit" type="submit">Save</button>
-            </form>
-            <form action="/courses/remove" method="POST" class="add-course__form">
-                <input type="hidden" value="{{ course.id }}" name="id">
-                <input type="hidden" name="_csrf" value="{{ csrf }}">
-                <button class="add-course__form__submit add-course__form__submit--remove" type="submit">Remove course</button>
-            </form>
+            <div class="add-course__content">
+                <img src="{{ course.img }}" alt="{{ course.title }}">
+                <div class="add-course__content-forms">
+                    <form action="/courses/edit" method="post" class="add-course__form" enctype="multipart/form-data">
+                        <input required type="text" class="add-course__form__item" placeholder="Course name"
+                               name="title" id="title" value="{{ course.title }}">
+                        <input required type="number" class="add-course__form__item" placeholder="Course price"
+                               name="price" id="price" value="{{ course.price }}">
+                        <input type="hidden" class="add-course__form__item" placeholder="image URL" name="img" id="img"
+                               value="{{ course.img }}">
+                        <input type="file" class="add-course__form__item" name="avatar">
+                        <input type="hidden" value="{{ course.id }}" name="id">
+                        <input type="hidden" name="_csrf" value="{{ csrf }}">
+                        {% if error %}
+                            <p class="add-course__form__error">{{ error }}</p>
+                        {% endif %}
+                        <button class="add-course__form__submit" type="submit">Save</button>
+                    </form>
+                    <form action="/courses/remove" method="POST" class="add-course__form">
+                        <input type="hidden" value="{{ course.id }}" name="id">
+                        <input type="hidden" name="_csrf" value="{{ csrf }}">
+                        <button class="add-course__form__submit add-course__form__submit--remove" type="submit">Remove
+                            course
+                        </button>
+                    </form>
+                </div>
+            </div>
         </div>
     </section>
 {% endblock %}

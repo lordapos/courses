@@ -41,6 +41,5 @@ exports.loginValidators = [
 
 exports.courseValidators = [
     body('title').isLength({min: 3}).withMessage('Minimum name length 3 characters').trim(),
-    body('price').isNumeric().withMessage('Enter the correct price'),
-    body('img', 'Enter the correct URL for the image').isURL()
+    body('price').isNumeric().withMessage('Enter the correct price')
 ]
