@@ -30,3 +30,11 @@ exports.registerValidators = [
         .isLength({min: 3}).withMessage('The name must be at least 3 characters')
         .trim(),
 ]
+
+exports.loginValidators = [
+    body('email')
+        .isEmail().withMessage('Please enter a valid email')
+        .normalizeEmail(),
+    body('password')
+        .trim(),
+]
