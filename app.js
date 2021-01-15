@@ -13,8 +13,10 @@ const addRoutes = require('./routes/add')
 const ordersRoutes = require('./routes/orders')
 const cardRoutes = require('./routes/card')
 const authRoutes = require('./routes/auth')
+const notFoundRoutes = require('./routes/404')
 const varMiddleware = require('./middleware/variables')
 const userMiddleware = require('./middleware/user')
+const errorHandler = require('./middleware/error')
 const keys = require('./keys')
 
 app.use(express.static(path.join(__dirname, 'public')));
@@ -40,14 +42,15 @@ app.use('/add', addRoutes)
 app.use('/card', cardRoutes)
 app.use('/orders', ordersRoutes)
 app.use('/auth', authRoutes)
+app.use('/404', notFoundRoutes)
 const env = nunjucks.configure(['views/'], {
     autoescape: true,
     express: app
 })
 
+app.use(errorHandler)
 
 const PORT = process.env.PORT || 3000
-
 async function start() {
     try {
         await  mongoose.connect(keys.MONGODB_URI, {
