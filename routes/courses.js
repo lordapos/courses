@@ -1,7 +1,9 @@
 const {Router} = require('express')
+const {validationResult} = require('express-validator')
 const Course = require('../models/course')
 const router = Router()
 const auth = require('../middleware/auth')
+const {courseValidators} = require('../utils/validators')
 
 function isOwner(course, req) {
     return course.userId.toString() === req.user._id.toString()
@@ -36,26 +38,35 @@ router.get('/:id', async (req, res) => {
 })
 
 router.get('/:id/edit', auth, async (req, res) => {
+    if (!req.query.allow) {
+        return res.redirect('/')
+    }
+
     try {
-        if (!req.query.allow) {
-            return res.redirect('/')
-        }
         const course = await Course.findById(req.params.id)
         if (!isOwner(course, req)) {
             return res.redirect('/courses')
         }
         res.render('edit-course.njk', {
             title: `Edit Course: ${course.title}`,
-            course
+            course,
+            error: req.flash('error')
         })
     } catch (e) {
         console.log(e)
     }
 })
 
-router.post('/edit', auth, async (req, res) => {
+router.post('/edit', courseValidators, auth, async (req, res) => {
+    const errors = validationResult(req)
+    const {id} = req.body
+
+    if (!errors.isEmpty()) {
+        req.flash('error', errors.array()[0].msg)
+        return res.status(422).redirect(`/courses/${id}/edit?allow=true`)
+    }
+
     try {
-        const {id} = req.body
         delete req.body.id
         const course = await Course.findById(id)
         if (!isOwner(course, req)) {

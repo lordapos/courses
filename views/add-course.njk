@@ -4,11 +4,14 @@
     <section class="add-course">
         <div class="add-course__inner">
             <h2>Add Course</h2>
-            <form action="/add" method="post" class="add-course__form">
-                <input required type="text" class="add-course__form__item" placeholder="Course name" name="title" id="title">
-                <input required type="number" class="add-course__form__item" placeholder="Course price" name="price" id="price">
-                <input required type="text" class="add-course__form__item" placeholder="image URL" name="img" id="img">
+            <form action="/add" method="post" class="add-course__form" novalidate>
+                <input required type="text" class="add-course__form__item" placeholder="Course name" name="title" id="title" value="{{ data.title }}">
+                <input required type="number" class="add-course__form__item" placeholder="Course price" name="price" id="price" value="{{ data.price }}">
+                <input required type="text" class="add-course__form__item" placeholder="image URL" name="img" id="img" value="{{ data.img }}">
                 <input type="hidden" name="_csrf" value="{{ csrf }}">
+                {% if error %}
+                    <p class="add-course__form__error">{{ error }}</p>
+                {% endif %}
                 <button class="add-course__form__submit" type="submit">Add</button>
             </form>
         </div>
