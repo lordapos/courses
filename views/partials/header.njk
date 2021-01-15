@@ -32,6 +32,12 @@
                     <li class="header__menu__item"><a href="/card" class="header__menu__link">Basket</a></li>
                 {% endif %}
 
+                {% if isProfile %}
+                    <li class="header__menu__item header__menu__item--active"><a href="/profile" class="header__menu__link">Profile</a></li>
+                {% else %}
+                    <li class="header__menu__item"><a href="/profile" class="header__menu__link">Profile</a></li>
+                {% endif %}
+
                 <li class="header__menu__item"><a href="/auth/logout" class="header__menu__link">Logout</a></li>
             {% else %}
                 {% if isLogin %}

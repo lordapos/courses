@@ -1,0 +1,33 @@
+{% extends "layouts/shop.njk" %}
+
+{% block content %}
+    <section class="profile">
+        <div class="profile__inner">
+            <h1>Profile</h1>
+            <div class="profile__content">
+                <div class="profile__image-block">
+                    {% if user.avatarUrl %}
+                    <img class="profile__image"
+                         src="{{ user.avatarUrl }}"
+                         alt="avatar-{{ user.name }}">
+                    {% else %}
+                        <img class="profile__image"
+                             src="https://www.cyclonis.com/images/2018/05/incognito-browser-mode.jpg"
+                             alt="">
+                    {% endif %}
+                </div>
+                <form action="/profile" method="post" class="profile__form" enctype="multipart/form-data">
+                    <p>Your email: <strong>{{ user.email }}</strong></p>
+                    <input type="text" class="profile__form__input" name="name" required placeholder="Name"
+                           value="{{ user.name }}">
+                    <input type="file" class="profile__form__file" name="avatar">
+                    <input type="hidden" name="_csrf" value="{{ csrf }}">
+                    {% if error %}
+                        <p class="profile__form__error">{{ error }}</p>
+                    {% endif %}
+                    <button type="submit" class="profile__form__submit">Save</button>
+                </form>
+            </div>
+        </div>
+    </section>
+{% endblock %}

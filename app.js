@@ -13,13 +13,16 @@ const addRoutes = require('./routes/add')
 const ordersRoutes = require('./routes/orders')
 const cardRoutes = require('./routes/card')
 const authRoutes = require('./routes/auth')
+const profileRoutes = require('./routes/profile')
 const notFoundRoutes = require('./routes/404')
 const varMiddleware = require('./middleware/variables')
 const userMiddleware = require('./middleware/user')
 const errorHandler = require('./middleware/error')
+const fileMiddleware = require('./middleware/file')
 const keys = require('./keys')
 
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/avatars', express.static(path.join(__dirname, 'avatars')));
 app.use(express.urlencoded({extended: true}))
 
 const store = new MongoStore({
@@ -32,6 +35,7 @@ app.use(session({
     saveUninitialized: false,
     store: store
 }))
+app.use(fileMiddleware.single('avatar'))
 app.use(csrf())
 app.use(flash())
 app.use(varMiddleware)
@@ -42,6 +46,7 @@ app.use('/add', addRoutes)
 app.use('/card', cardRoutes)
 app.use('/orders', ordersRoutes)
 app.use('/auth', authRoutes)
+app.use('/profile', profileRoutes)
 app.use('/404', notFoundRoutes)
 const env = nunjucks.configure(['views/'], {
     autoescape: true,
